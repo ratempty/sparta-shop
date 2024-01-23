@@ -52,12 +52,14 @@ router.put("/products/:productId", async (req, res) => {
     const { productId } = req.params;
     const { title, content, password, status } = req.body;
 
-    const targetItem = await Product.findById(productId).exec();
     if (!title || !content || !password || !status) {
       return res
         .status(404)
         .json({ errorMessage: "상품 조회를 실패했습니다!" });
     }
+    
+    const targetItem = await Product.findById(productId).exec();
+
     if (targetItem.password === password) {
       targetItem.title = title;
       targetItem.content = content;
