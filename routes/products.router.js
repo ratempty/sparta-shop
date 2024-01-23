@@ -4,6 +4,7 @@ import Product from "../schemas/products.schema.js";
 const router = express.Router();
 
 // 상품 등록 api
+
 router.post("/products", async (req, res) => {
   try {
     const { title, content, author, password } = req.body;
@@ -29,7 +30,7 @@ router.get("/products", async (req, res) => {
 });
 
 // 상품 상세 조회 api
-// ==================없는 아이템 아이디 조회시 오류?
+
 router.get("/products/:productId", async (req, res) => {
   try {
     const { productId } = req.params;
